@@ -24,8 +24,9 @@ Route::post('/login',[\App\Http\Controllers\AuthController::class,'verify'])->na
 Route::group(['middleware' => 'auth:user'], function (){
     Route::prefix('admin')->group(function (){
         Route::get('/',[\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
+        Route::get('/dashboard',[\App\Http\Controllers\DashboardController::class,'index']);
 
-        Route::get('/user',[\App\Http\Controllers\UserController::class,'index'])->name('user.index');
+        Route::get('/user',[\App\Http\Controllers\UserController::class,'index']);
     });
 });
 

@@ -21,6 +21,9 @@
     <div class="card card-outline card-primary">
         <div class="card-body">
             <p class="login-box-msg">RPL Login</p>
+            @if(session('pesan'))
+                <div class="alert alert-danger">{{session('pesan')}}</div>
+            @endif
             <form action="{{route('auth.verify')}}" method="post">
                 @csrf
                 <div class="input-group mb-3">

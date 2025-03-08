@@ -1,0 +1,33 @@
+@extends('layout.main')
+
+@section('content')
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama Kategori</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        @php
+            $no = 1;
+        @endphp
+        <tbody>
+            @foreach ($kategori as $row)
+                <tr>
+                    <td>{{$no++}}</td>
+                    <td>{{ $row->nama_kategori }}</td>
+                    <td>
+                        <a href="{{ route('kategori.edit', $k->id) }}" class="btn btn-warning">Edit</a>
+                        <form action="{{ route('kategori.destroy', $k->id) }}" method="post" class="d-inline">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+
+@endsection
